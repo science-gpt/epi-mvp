@@ -1,0 +1,13 @@
+langchain
+chromadb
+langchain-chroma
+langchain-community
+unstructured
+sentence-transformers
+faiss-cpu
+PyMuPDF
+frontend
+nltk
+langchain_cohere
+python-dotenv
+cohere
