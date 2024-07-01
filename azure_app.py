@@ -54,13 +54,15 @@ def format_docs(docs):
 def main():
     st.title("Pesticide Epidemiology Question Answering Bot")
 
-    text = extract_text_from_pdf("A - Tables 11 and 21 (less complex).pdf")
+    print("LOG: Extracting pdf")
+    text = extract_text_from_pdf("Acephate.pdf")
 
+    print("LOG: Embedding pdf")
     sentence_docs, embedding_model = embed_text(text)
     print("Number of chunks: ", len(sentence_docs))
     print("Number of chunks: ", embedding_model)
     db = FAISS.from_documents(sentence_docs, embedding_model)
-    print("FAISS DB INITIALISED")
+    print("LOG: Faiss DB initalized")
     retriever = db.as_retriever()
 
     prompt = hub.pull("rlm/rag-prompt")
@@ -82,7 +84,6 @@ def main():
             st.write(response)
         else:
             st.write("Please enter a question")
-
 
 if __name__ == "__main__":
     main()
